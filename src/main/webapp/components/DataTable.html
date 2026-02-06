@@ -1,0 +1,168 @@
+<!--
+    DATA-TABLE.HTML - Reusable Data Table Component
+    Purpose: Professional table component for displaying tabular data
+    Part of Nexus Design System
+    
+    Usage: Copy and customize with your data
+-->
+
+<!-- Basic Table Structure -->
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#001</td>
+                <td>Sample Data</td>
+                <td>
+                    <span class="badge badge-success">Active</span>
+                </td>
+                <td>Jan 29, 2026</td>
+                <td>
+                    <div class="flex gap-2">
+                        <button class="btn btn-sm btn-ghost" title="View">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-ghost" title="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-ghost" title="Delete">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            <!-- More rows here -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Table with Pagination -->
+<div class="widget">
+    <div class="widget-header">
+        <h3 class="widget-title">Recent Items</h3>
+        <a href="#" class="widget-action">View All</a>
+    </div>
+    <div class="widget-body">
+        <div class="dashboard-table-wrapper">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="flex items-center gap-3">
+                                <div class="activity-icon">
+                                    <i class="bi bi-file-text"></i>
+                                </div>
+                                <strong>Item Title</strong>
+                            </div>
+                        </td>
+                        <td>Brief description here</td>
+                        <td><span class="badge badge-primary">Pending</span></td>
+                        <td>2 hours ago</td>
+                    </tr>
+                    <!-- Add more rows -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-between items-center mt-6">
+            <div class="text-sm text-secondary">
+                Showing <strong>1-10</strong> of <strong>100</strong> items
+            </div>
+            <nav class="pagination" aria-label="Table pagination">
+                <button class="pagination-item" disabled>
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="pagination-item active">1</button>
+                <button class="pagination-item">2</button>
+                <button class="pagination-item">3</button>
+                <button class="pagination-item">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Striped Table -->
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+            </tr>
+            <tr>
+                <td>Data 4</td>
+                <td>Data 5</td>
+                <td>Data 6</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Compact Table -->
+<div class="table-container">
+    <table class="table table-compact">
+        <thead>
+            <tr>
+                <th>Compact</th>
+                <th>Table</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Smaller</td>
+                <td>Padding</td>
+                <td>Size</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--
+    BADGE STATUS OPTIONS:
+    - badge-primary (blue)
+    - badge-success (green)
+    - badge-warning (orange)
+    - badge-danger (red)
+    - badge-secondary (gray)
+    
+    TABLE MODIFIERS:
+    - table-striped (alternating row colors)
+    - table-bordered (add borders)
+    - table-compact (smaller padding)
+    
+    COMMON STATUS VALUES:
+    - Active, Inactive
+    - Pending, Approved, Rejected
+    - Open, Closed
+    - In Progress, Completed
+    - High, Medium, Low (priority)
+-->

@@ -1,0 +1,204 @@
+<!--
+    SIDEBAR.HTML - Dashboard Sidebar Navigation
+    Purpose: Reusable sidebar navigation for all dashboard pages
+    Part of Nexus Design System
+    
+    Usage: Include this file and customize active state via JavaScript
+    Set userRole variable before including this component
+-->
+<aside class="dashboard-sidebar sidebar" id="dashboardSidebar" role="navigation" aria-label="Dashboard navigation">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+        <a href="${pageContext.request.contextPath}/index.jsp" class="sidebar-logo">
+            <div class="sidebar-logo-icon" aria-hidden="true">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <span class="sidebar-logo-text">Nexus</span>
+        </a>
+    </div>
+    
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-nav" id="sidebarNav">
+        <!-- ADMIN NAVIGATION -->
+        <c:if test="${sessionScope.role == 'ADMIN'}">
+            <div class="sidebar-nav-section">
+                <div class="sidebar-nav-label">Main</div>
+                <a href="${pageContext.request.contextPath}/views/admin/dashboard.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="dashboard">
+                    <span class="sidebar-nav-icon"><i class="bi bi-speedometer2"></i></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/admin/complaintMonitor.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="complaints">
+                    <span class="sidebar-nav-icon"><i class="bi bi-folder-open"></i></span>
+                    <span>Complaints</span>
+                    <span class="sidebar-nav-badge">12</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/admin/advanceAnalytics.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="analytics">
+                    <span class="sidebar-nav-icon"><i class="bi bi-graph-up"></i></span>
+                    <span>Analytics</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-nav-section">
+                <div class="sidebar-nav-label">Management</div>
+                <a href="${pageContext.request.contextPath}/views/admin/userManagement.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="users">
+                    <span class="sidebar-nav-icon"><i class="bi bi-people"></i></span>
+                    <span>Users</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/admin/station_dept.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="stations">
+                    <span class="sidebar-nav-icon"><i class="bi bi-building"></i></span>
+                    <span>Stations</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/admin/assignOfficer.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="officers">
+                    <span class="sidebar-nav-icon"><i class="bi bi-person-badge"></i></span>
+                    <span>Officers</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-nav-section">
+                <div class="sidebar-nav-label">System</div>
+                <a href="${pageContext.request.contextPath}/views/admin/broadcast_alert.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="broadcast">
+                    <span class="sidebar-nav-icon"><i class="bi bi-megaphone"></i></span>
+                    <span>Broadcast</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/admin/system_logs.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="logs">
+                    <span class="sidebar-nav-icon"><i class="bi bi-file-text"></i></span>
+                    <span>System Logs</span>
+                </a>
+            </div>
+        </c:if>
+        
+        <!-- POLICE NAVIGATION -->
+        <c:if test="${sessionScope.role == 'POLICE'}">
+            <div class="sidebar-nav-section">
+                <div class="sidebar-nav-label">Main</div>
+                <a href="${pageContext.request.contextPath}/views/police/dashboard.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="dashboard">
+                    <span class="sidebar-nav-icon"><i class="bi bi-speedometer2"></i></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/police/cases.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="cases">
+                    <span class="sidebar-nav-icon"><i class="bi bi-briefcase"></i></span>
+                    <span>My Cases</span>
+                    <span class="sidebar-nav-badge">5</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/police/reports.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="reports">
+                    <span class="sidebar-nav-icon"><i class="bi bi-file-earmark-text"></i></span>
+                    <span>Reports</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-nav-section">
+                <div class="sidebar-nav-label">Communication</div>
+                <a href="${pageContext.request.contextPath}/views/police/messages.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="messages">
+                    <span class="sidebar-nav-icon"><i class="bi bi-chat-dots"></i></span>
+                    <span>Messages</span>
+                </a>
+            </div>
+        </c:if>
+        
+        <!-- CIVILIAN NAVIGATION -->
+        <c:if test="${sessionScope.role == 'CIVILIAN'}">
+            <div class="sidebar-nav-section">
+                <div class="sidebar-nav-label">Main</div>
+                <a href="${pageContext.request.contextPath}/views/civilian/dashboard.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="dashboard">
+                    <span class="sidebar-nav-icon"><i class="bi bi-speedometer2"></i></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/civilian/viewComplaints.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="complaints">
+                    <span class="sidebar-nav-icon"><i class="bi bi-folder"></i></span>
+                    <span>My Complaints</span>
+                </a>
+                <a href="${pageContext.request.contextPath}/views/civilian/fileComplaint.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="file">
+                    <span class="sidebar-nav-icon"><i class="bi bi-plus-circle"></i></span>
+                    <span>File Complaint</span>
+                </a>
+            </div>
+            
+            <div class="sidebar-nav-section">
+                <div class="sidebar-nav-label">Account</div>
+                <a href="${pageContext.request.contextPath}/views/civilian/profile.jsp" 
+                   class="sidebar-nav-item" 
+                   data-page="profile">
+                    <span class="sidebar-nav-icon"><i class="bi bi-person"></i></span>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </c:if>
+    </nav>
+    
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+        <a href="${pageContext.request.contextPath}/views/auth/logout.jsp" 
+           class="sidebar-nav-item" 
+           style="color: var(--nexus-danger);">
+            <span class="sidebar-nav-icon"><i class="bi bi-box-arrow-right"></i></span>
+            <span>Logout</span>
+        </a>
+    </div>
+</aside>
+
+<style>
+    /* Sidebar collapse functionality */
+    .sidebar.collapsed {
+        width: 70px;
+    }
+    
+    .sidebar.collapsed .sidebar-logo-text,
+    .sidebar.collapsed .sidebar-nav-item span:not(.sidebar-nav-icon),
+    .sidebar.collapsed .sidebar-nav-label,
+    .sidebar.collapsed .sidebar-nav-badge {
+        display: none;
+    }
+    
+    .sidebar.collapsed .sidebar-nav-item {
+        justify-content: center;
+    }
+</style>
+
+<script>
+    // Set active sidebar item based on current page
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get current page filename
+        const currentPath = window.location.pathname;
+        const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1).replace('.jsp', '');
+        
+        // Find and activate matching nav item
+        const navItems = document.querySelectorAll('.sidebar-nav-item');
+        navItems.forEach(item => {
+            const pageName = item.getAttribute('data-page');
+            if (pageName === currentPage || 
+                (pageName === 'dashboard' && currentPath.includes('dashboard'))) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>

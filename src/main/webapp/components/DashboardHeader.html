@@ -1,0 +1,247 @@
+<!--
+    DASHBOARD-HEADER.HTML - Dashboard Top Navigation Bar
+    Purpose: Reusable header for dashboard pages with search, notifications, and user menu
+    Part of Nexus Design System
+-->
+<header class="dashboard-header" role="banner">
+    <div class="navbar-dashboard">
+        <!-- Left Section -->
+        <div class="navbar-left">
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggle" 
+                    id="sidebarToggle" 
+                    aria-label="Toggle sidebar"
+                    aria-expanded="true">
+                <i class="bi bi-list" style="font-size: 24px;"></i>
+            </button>
+            
+            <!-- Search Bar -->
+            <div class="navbar-search">
+                <i class="bi bi-search navbar-search-icon"></i>
+                <input type="search" 
+                       class="navbar-search-input" 
+                       placeholder="Search..." 
+                       aria-label="Search">
+            </div>
+        </div>
+        
+        <!-- Right Section -->
+        <div class="navbar-right">
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" 
+                    id="themeToggle" 
+                    aria-label="Toggle dark mode"
+                    title="Toggle theme">
+                <div class="theme-toggle-slider">
+                    <i class="bi bi-sun theme-toggle-icon"></i>
+                </div>
+            </button>
+            
+            <!-- Notifications -->
+            <button class="navbar-icon-btn" 
+                    id="notificationsBtn" 
+                    aria-label="Notifications"
+                    title="Notifications">
+                <i class="bi bi-bell" style="font-size: 20px;"></i>
+                <span class="navbar-icon-badge" aria-label="3 unread notifications"></span>
+            </button>
+            
+            <!-- Messages -->
+            <button class="navbar-icon-btn" 
+                    id="messagesBtn" 
+                    aria-label="Messages"
+                    title="Messages">
+                <i class="bi bi-envelope" style="font-size: 20px;"></i>
+            </button>
+            
+            <!-- User Menu -->
+            <div class="navbar-user" id="userMenuToggle" role="button" tabindex="0" aria-haspopup="true">
+                <div class="navbar-user-avatar">
+                    ${sessionScope.username != null ? sessionScope.username.substring(0, 1).toUpperCase() : 'U'}
+                </div>
+                <div class="navbar-user-info">
+                    <div class="navbar-user-name">
+                        ${sessionScope.username != null ? sessionScope.username : 'User'}
+                    </div>
+                    <div class="navbar-user-role">
+                        ${sessionScope.role != null ? sessionScope.role : 'Guest'}
+                    </div>
+                </div>
+                <i class="bi bi-chevron-down" style="font-size: 12px; color: var(--nexus-text-tertiary);"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- User Dropdown Menu (Hidden by default) -->
+    <div class="user-dropdown hidden" id="userDropdown" role="menu">
+        <div class="user-dropdown-content">
+            <a href="${pageContext.request.contextPath}/views/profile.jsp" 
+               class="user-dropdown-item" 
+               role="menuitem">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+            </a>
+            <a href="${pageContext.request.contextPath}/views/settings.jsp" 
+               class="user-dropdown-item" 
+               role="menuitem">
+                <i class="bi bi-gear"></i>
+                <span>Settings</span>
+            </a>
+            <hr class="user-dropdown-divider">
+            <a href="${pageContext.request.contextPath}/views/auth/logout.jsp" 
+               class="user-dropdown-item user-dropdown-danger" 
+               role="menuitem">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<style>
+    /* User Dropdown Menu */
+    .user-dropdown {
+        position: absolute;
+        top: 60px;
+        right: var(--space-6);
+        min-width: 220px;
+        background-color: var(--nexus-bg-secondary);
+        border: 1px solid var(--nexus-gray-200);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-xl);
+        z-index: var(--z-dropdown);
+        animation: dropdownSlideIn 0.2s ease;
+    }
+    
+    @keyframes dropdownSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .user-dropdown.hidden {
+        display: none;
+    }
+    
+    .user-dropdown-content {
+        padding: var(--space-2);
+    }
+    
+    .user-dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        padding: var(--space-3) var(--space-4);
+        color: var(--nexus-text-primary);
+        text-decoration: none;
+        font-size: var(--font-sm);
+        border-radius: var(--radius-md);
+        transition: background-color var(--transition-fast);
+    }
+    
+    .user-dropdown-item:hover {
+        background-color: var(--nexus-gray-100);
+    }
+    
+    .user-dropdown-item i {
+        font-size: var(--font-base);
+        color: var(--nexus-text-secondary);
+    }
+    
+    .user-dropdown-danger {
+        color: var(--nexus-danger);
+    }
+    
+    .user-dropdown-danger i {
+        color: var(--nexus-danger);
+    }
+    
+    .user-dropdown-divider {
+        margin: var(--space-2) 0;
+        border: none;
+        height: 1px;
+        background-color: var(--nexus-gray-200);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('dashboardSidebar');
+        
+        if (sidebarToggle && sidebar) {
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('mobile-open');
+                const isOpen = sidebar.classList.contains('mobile-open');
+                sidebarToggle.setAttribute('aria-expanded', isOpen);
+            });
+        }
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle?.querySelector('.theme-toggle-icon');
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('nexus-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        if (themeIcon) {
+            themeIcon.className = savedTheme === 'dark' ? 'bi bi-moon theme-toggle-icon' : 'bi bi-sun theme-toggle-icon';
+        }
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('nexus-theme', newTheme);
+                
+                if (themeIcon) {
+                    themeIcon.className = newTheme === 'dark' ? 'bi bi-moon theme-toggle-icon' : 'bi bi-sun theme-toggle-icon';
+                }
+            });
+        }
+        
+        // User Menu Toggle
+        const userMenuToggle = document.getElementById('userMenuToggle');
+        const userDropdown = document.getElementById('userDropdown');
+        
+        if (userMenuToggle && userDropdown) {
+            userMenuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                userDropdown.classList.toggle('hidden');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!userDropdown.contains(e.target) && !userMenuToggle.contains(e.target)) {
+                    userDropdown.classList.add('hidden');
+                }
+            });
+        }
+        
+        // Notifications placeholder (implement your own logic)
+        const notificationsBtn = document.getElementById('notificationsBtn');
+        if (notificationsBtn) {
+            notificationsBtn.addEventListener('click', function() {
+                // TODO: Implement notifications panel
+                alert('Notifications feature - Implement your notification system here');
+            });
+        }
+        
+        // Messages placeholder
+        const messagesBtn = document.getElementById('messagesBtn');
+        if (messagesBtn) {
+            messagesBtn.addEventListener('click', function() {
+                // TODO: Implement messages panel
+                alert('Messages feature - Implement your messaging system here');
+            });
+        }
+    });
+</script>

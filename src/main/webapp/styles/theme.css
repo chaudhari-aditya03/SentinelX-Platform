@@ -1,0 +1,273 @@
+/**
+ * THEME.CSS - Theme Configuration & Dark Mode
+ * Purpose: Color themes and dark mode implementation
+ * Part of Nexus Design System
+ */
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+.theme-toggle {
+    position: relative;
+    width: 60px;
+    height: 32px;
+    background-color: var(--nexus-gray-300);
+    border-radius: var(--radius-full);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-base);
+}
+
+[data-theme="dark"] .theme-toggle {
+    background-color: var(--nexus-primary);
+}
+
+.theme-toggle-slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--nexus-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .theme-toggle-slider {
+    transform: translateX(28px);
+}
+
+.theme-toggle-icon {
+    font-size: 14px;
+    color: var(--nexus-gray-600);
+}
+
+/* ============================================
+   DARK THEME OVERRIDES
+   ============================================ */
+[data-theme="dark"] {
+    /* Update component backgrounds */
+    --nexus-bg-primary: #0F1F2E;
+    --nexus-bg-secondary: #1C3144;
+    --nexus-bg-tertiary: #2A4A5F;
+    
+    /* Update text colors */
+    --nexus-text-primary: #F9FAFB;
+    --nexus-text-secondary: #D1D5DB;
+    --nexus-text-tertiary: #9CA3AF;
+    
+    /* Update neutral colors */
+    --nexus-gray-50: #374151;
+    --nexus-gray-100: #4B5563;
+    --nexus-gray-200: #6B7280;
+    --nexus-gray-300: #9CA3AF;
+    
+    /* Update shadows for dark mode */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark mode specific component adjustments */
+[data-theme="dark"] .card {
+    border-color: var(--nexus-gray-700);
+}
+
+[data-theme="dark"] .form-control {
+    background-color: var(--nexus-bg-tertiary);
+    border-color: var(--nexus-gray-700);
+    color: var(--nexus-text-primary);
+}
+
+[data-theme="dark"] .form-control:focus {
+    border-color: var(--nexus-accent);
+    background-color: var(--nexus-bg-secondary);
+}
+
+[data-theme="dark"] .table thead {
+    background-color: var(--nexus-bg-tertiary);
+}
+
+[data-theme="dark"] .table tbody tr:hover {
+    background-color: var(--nexus-bg-tertiary);
+}
+
+[data-theme="dark"] .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .navbar-icon-btn:hover {
+    background-color: var(--nexus-bg-tertiary);
+}
+
+[data-theme="dark"] .sidebar {
+    background-color: #0A1520;
+}
+
+/* ============================================
+   THEME PRESETS (Optional future use)
+   ============================================ */
+
+/* Blue Theme (Default) */
+[data-theme-color="blue"] {
+    --nexus-accent: #00A3FF;
+    --nexus-accent-hover: #008be6;
+    --nexus-accent-light: #E6F5FF;
+}
+
+/* Green Theme */
+[data-theme-color="green"] {
+    --nexus-accent: #10B981;
+    --nexus-accent-hover: #059669;
+    --nexus-accent-light: #D1FAE5;
+}
+
+/* Purple Theme */
+[data-theme-color="purple"] {
+    --nexus-accent: #8B5CF6;
+    --nexus-accent-hover: #7C3AED;
+    --nexus-accent-light: #EDE9FE;
+}
+
+/* Orange Theme */
+[data-theme-color="orange"] {
+    --nexus-accent: #F97316;
+    --nexus-accent-hover: #EA580C;
+    --nexus-accent-light: #FFEDD5;
+}
+
+/* Red Theme */
+[data-theme-color="red"] {
+    --nexus-accent: #EF4444;
+    --nexus-accent-hover: #DC2626;
+    --nexus-accent-light: #FEE2E2;
+}
+
+/* ============================================
+   THEME ANIMATIONS
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+    [data-theme] {
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY - HIGH CONTRAST MODE
+   ============================================ */
+@media (prefers-contrast: high) {
+    :root {
+        --nexus-gray-200: #C0C0C0;
+        --nexus-gray-300: #A0A0A0;
+        --nexus-gray-400: #808080;
+    }
+    
+    .btn {
+        border-width: 2px;
+    }
+    
+    .form-control:focus {
+        outline: 3px solid var(--nexus-accent);
+        outline-offset: 2px;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .dashboard-sidebar,
+    .dashboard-header,
+    .navbar,
+    .sidebar,
+    .btn,
+    .navbar-icon-btn,
+    .theme-toggle {
+        display: none !important;
+    }
+    
+    .dashboard-main {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .card {
+        border: 1px solid #000;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--nexus-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--nexus-gray-400);
+    border-radius: var(--radius-full);
+    border: 3px solid var(--nexus-gray-100);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--nexus-gray-500);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--nexus-gray-400) var(--nexus-gray-100);
+}
+
+/* ============================================
+   FOCUS VISIBLE IMPROVEMENTS
+   ============================================ */
+[data-theme="dark"] :focus-visible {
+    outline-color: var(--nexus-accent);
+}
+
+/* ============================================
+   SELECTION COLORS
+   ============================================ */
+::selection {
+    background-color: var(--nexus-accent-light);
+    color: var(--nexus-primary);
+}
+
+[data-theme="dark"] ::selection {
+    background-color: var(--nexus-accent);
+    color: var(--nexus-white);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,0 +1,315 @@
+/**
+ * BASE.CSS - Foundation Styles
+ * Purpose: CSS reset, root variables, typography, and base element styling
+ * Part of Nexus Design System
+ */
+
+/* ============================================
+   CSS RESET & BOX SIZING
+   ============================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+/* ============================================
+   CSS VARIABLES - DESIGN TOKENS
+   Uses 4px spacing system for consistency
+   ============================================ */
+:root {
+    /* PRIMARY COLOR PALETTE */
+    --nexus-primary: #1C3144;          /* Primary Dark Blue */
+    --nexus-primary-light: #2A4A5F;    /* Lighter variant */
+    --nexus-primary-dark: #0F1F2E;     /* Darker variant */
+    
+    /* ACCENT COLORS */
+    --nexus-accent: #00A3FF;           /* Bright Blue Accent */
+    --nexus-accent-hover: #008be6;     /* Accent hover state */
+    --nexus-accent-light: #E6F5FF;     /* Light accent background */
+    
+    /* SEMANTIC COLORS */
+    --nexus-success: #10B981;          /* Green for success */
+    --nexus-warning: #F59E0B;          /* Orange for warnings */
+    --nexus-danger: #EF4444;           /* Red for errors */
+    --nexus-info: #3B82F6;             /* Blue for information */
+    
+    /* NEUTRAL PALETTE */
+    --nexus-white: #FFFFFF;
+    --nexus-gray-50: #F9FAFB;
+    --nexus-gray-100: #F3F4F6;
+    --nexus-gray-200: #E5E7EB;
+    --nexus-gray-300: #D1D5DB;
+    --nexus-gray-400: #9CA3AF;
+    --nexus-gray-500: #6B7280;
+    --nexus-gray-600: #4B5563;
+    --nexus-gray-700: #374151;
+    --nexus-gray-800: #1F2937;
+    --nexus-gray-900: #111827;
+    --nexus-black: #000000;
+    
+    /* BACKGROUND COLORS */
+    --nexus-bg-primary: #F0F4F8;       /* Main background */
+    --nexus-bg-secondary: #FFFFFF;     /* Card/panel background */
+    --nexus-bg-tertiary: #F9FAFB;      /* Subtle background */
+    
+    /* TEXT COLORS */
+    --nexus-text-primary: #111827;     /* Main text */
+    --nexus-text-secondary: #6B7280;   /* Secondary text */
+    --nexus-text-tertiary: #9CA3AF;    /* Tertiary/muted text */
+    --nexus-text-inverse: #FFFFFF;     /* Text on dark backgrounds */
+    
+    /* SPACING SCALE (4px system) */
+    --space-1: 4px;                    /* 0.25rem */
+    --space-2: 8px;                    /* 0.5rem */
+    --space-3: 12px;                   /* 0.75rem */
+    --space-4: 16px;                   /* 1rem */
+    --space-5: 20px;                   /* 1.25rem */
+    --space-6: 24px;                   /* 1.5rem */
+    --space-8: 32px;                   /* 2rem */
+    --space-10: 40px;                  /* 2.5rem */
+    --space-12: 48px;                  /* 3rem */
+    --space-16: 64px;                  /* 4rem */
+    --space-20: 80px;                  /* 5rem */
+    --space-24: 96px;                  /* 6rem */
+    
+    /* FONT FAMILIES */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    
+    /* FONT SIZES */
+    --font-xs: 0.75rem;                /* 12px */
+    --font-sm: 0.875rem;               /* 14px */
+    --font-base: 1rem;                 /* 16px */
+    --font-lg: 1.125rem;               /* 18px */
+    --font-xl: 1.25rem;                /* 20px */
+    --font-2xl: 1.5rem;                /* 24px */
+    --font-3xl: 1.875rem;              /* 30px */
+    --font-4xl: 2.25rem;               /* 36px */
+    --font-5xl: 3rem;                  /* 48px */
+    
+    /* FONT WEIGHTS */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+    
+    /* LINE HEIGHTS */
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.75;
+    
+    /* BORDER RADIUS */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+    
+    /* SHADOWS */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    
+    /* TRANSITIONS */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 350ms ease;
+    
+    /* Z-INDEX SCALE */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+}
+
+/* ============================================
+   DARK THEME VARIABLES
+   ============================================ */
+[data-theme="dark"] {
+    --nexus-bg-primary: #0F1F2E;
+    --nexus-bg-secondary: #1C3144;
+    --nexus-bg-tertiary: #2A4A5F;
+    
+    --nexus-text-primary: #F9FAFB;
+    --nexus-text-secondary: #D1D5DB;
+    --nexus-text-tertiary: #9CA3AF;
+    
+    --nexus-gray-100: #374151;
+    --nexus-gray-200: #4B5563;
+    --nexus-gray-300: #6B7280;
+}
+
+/* ============================================
+   BASE TYPOGRAPHY
+   ============================================ */
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-base);
+    font-weight: var(--font-normal);
+    line-height: var(--leading-normal);
+    color: var(--nexus-text-primary);
+    background-color: var(--nexus-bg-primary);
+    overflow-x: hidden;
+}
+
+/* HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    color: var(--nexus-text-primary);
+    margin-bottom: var(--space-4);
+}
+
+h1 { font-size: var(--font-5xl); }
+h2 { font-size: var(--font-4xl); }
+h3 { font-size: var(--font-3xl); }
+h4 { font-size: var(--font-2xl); }
+h5 { font-size: var(--font-xl); }
+h6 { font-size: var(--font-lg); }
+
+/* PARAGRAPHS & TEXT */
+p {
+    margin-bottom: var(--space-4);
+    color: var(--nexus-text-secondary);
+}
+
+small {
+    font-size: var(--font-sm);
+}
+
+strong, b {
+    font-weight: var(--font-semibold);
+}
+
+a {
+    color: var(--nexus-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--nexus-accent-hover);
+    text-decoration: underline;
+}
+
+/* LISTS */
+ul, ol {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-6);
+}
+
+li {
+    margin-bottom: var(--space-2);
+}
+
+/* CODE */
+code, pre {
+    font-family: var(--font-mono);
+    font-size: var(--font-sm);
+}
+
+code {
+    padding: var(--space-1) var(--space-2);
+    background-color: var(--nexus-gray-100);
+    border-radius: var(--radius-sm);
+    color: var(--nexus-accent);
+}
+
+pre {
+    padding: var(--space-4);
+    background-color: var(--nexus-gray-100);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: var(--space-4);
+}
+
+/* BLOCKQUOTE */
+blockquote {
+    padding: var(--space-4);
+    border-left: 4px solid var(--nexus-accent);
+    background-color: var(--nexus-gray-50);
+    margin-bottom: var(--space-4);
+    font-style: italic;
+}
+
+/* HORIZONTAL RULE */
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--nexus-gray-200);
+    margin: var(--space-8) 0;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+/* Focus visible for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--nexus-accent);
+    outline-offset: 2px;
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--nexus-accent);
+    color: var(--nexus-white);
+    padding: var(--space-2) var(--space-4);
+    text-decoration: none;
+    z-index: var(--z-tooltip);
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: var(--nexus-text-primary); }
+.text-secondary { color: var(--nexus-text-secondary); }
+.text-tertiary { color: var(--nexus-text-tertiary); }
+.text-accent { color: var(--nexus-accent); }
+.text-success { color: var(--nexus-success); }
+.text-warning { color: var(--nexus-warning); }
+.text-danger { color: var(--nexus-danger); }
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

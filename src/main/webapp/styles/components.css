@@ -1,0 +1,826 @@
+/**
+ * COMPONENTS.CSS - Reusable UI Components
+ * Purpose: Buttons, cards, forms, tables, modals, and other common components
+ * Part of Nexus Design System
+ */
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-family: var(--font-primary);
+    font-size: var(--font-base);
+    font-weight: var(--font-medium);
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    user-select: none;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Button sizes */
+.btn-sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-sm);
+}
+
+.btn-lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--font-lg);
+}
+
+/* Button variants */
+.btn-primary {
+    background-color: var(--nexus-accent);
+    color: var(--nexus-white);
+    border-color: var(--nexus-accent);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--nexus-accent-hover);
+    border-color: var(--nexus-accent-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: var(--nexus-primary);
+    color: var(--nexus-white);
+    border-color: var(--nexus-primary);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--nexus-primary-light);
+    border-color: var(--nexus-primary-light);
+}
+
+.btn-success {
+    background-color: var(--nexus-success);
+    color: var(--nexus-white);
+    border-color: var(--nexus-success);
+}
+
+.btn-success:hover:not(:disabled) {
+    background-color: #0D9668;
+}
+
+.btn-danger {
+    background-color: var(--nexus-danger);
+    color: var(--nexus-white);
+    border-color: var(--nexus-danger);
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: #DC2626;
+}
+
+.btn-warning {
+    background-color: var(--nexus-warning);
+    color: var(--nexus-white);
+    border-color: var(--nexus-warning);
+}
+
+.btn-warning:hover:not(:disabled) {
+    background-color: #D97706;
+}
+
+/* Outline buttons */
+.btn-outline {
+    background-color: transparent;
+    color: var(--nexus-accent);
+    border-color: var(--nexus-accent);
+}
+
+.btn-outline:hover:not(:disabled) {
+    background-color: var(--nexus-accent);
+    color: var(--nexus-white);
+}
+
+.btn-outline-secondary {
+    background-color: transparent;
+    color: var(--nexus-primary);
+    border-color: var(--nexus-primary);
+}
+
+.btn-outline-secondary:hover:not(:disabled) {
+    background-color: var(--nexus-primary);
+    color: var(--nexus-white);
+}
+
+/* Ghost button */
+.btn-ghost {
+    background-color: transparent;
+    color: var(--nexus-text-primary);
+    border-color: transparent;
+}
+
+.btn-ghost:hover:not(:disabled) {
+    background-color: var(--nexus-gray-100);
+}
+
+/* Icon button */
+.btn-icon {
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+}
+
+/* Button group */
+.btn-group {
+    display: inline-flex;
+    gap: var(--space-2);
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+    background-color: var(--nexus-bg-secondary);
+    border: 1px solid var(--nexus-gray-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    padding: var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--nexus-gray-200);
+    background-color: var(--nexus-bg-tertiary);
+}
+
+.card-body {
+    padding: var(--space-6);
+}
+
+.card-footer {
+    padding: var(--space-4) var(--space-6);
+    border-top: 1px solid var(--nexus-gray-200);
+    background-color: var(--nexus-bg-tertiary);
+}
+
+.card-title {
+    font-size: var(--font-xl);
+    font-weight: var(--font-semibold);
+    color: var(--nexus-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.card-subtitle {
+    font-size: var(--font-sm);
+    color: var(--nexus-text-secondary);
+    margin-bottom: 0;
+}
+
+/* Card variants */
+.card-bordered {
+    border: 2px solid var(--nexus-gray-300);
+}
+
+.card-elevated {
+    box-shadow: var(--shadow-lg);
+}
+
+.card-interactive {
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ============================================
+   STAT CARDS (Dashboard)
+   ============================================ */
+.stat-card {
+    background-color: var(--nexus-bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.stat-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+    font-size: var(--font-2xl);
+}
+
+.stat-card-icon.primary {
+    background-color: var(--nexus-accent-light);
+    color: var(--nexus-accent);
+}
+
+.stat-card-icon.success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--nexus-success);
+}
+
+.stat-card-icon.warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--nexus-warning);
+}
+
+.stat-card-icon.danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--nexus-danger);
+}
+
+.stat-card-value {
+    font-size: var(--font-4xl);
+    font-weight: var(--font-bold);
+    color: var(--nexus-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.stat-card-label {
+    font-size: var(--font-sm);
+    color: var(--nexus-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-card-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-sm);
+    font-weight: var(--font-medium);
+    margin-top: var(--space-2);
+}
+
+.stat-card-trend.up {
+    color: var(--nexus-success);
+}
+
+.stat-card-trend.down {
+    color: var(--nexus-danger);
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+.form-group {
+    margin-bottom: var(--space-5);
+}
+
+.form-label {
+    display: block;
+    font-size: var(--font-sm);
+    font-weight: var(--font-medium);
+    color: var(--nexus-text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.form-label.required::after {
+    content: " *";
+    color: var(--nexus-danger);
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-primary);
+    font-size: var(--font-base);
+    line-height: var(--leading-normal);
+    color: var(--nexus-text-primary);
+    background-color: var(--nexus-bg-secondary);
+    border: 1px solid var(--nexus-gray-300);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--nexus-accent);
+    box-shadow: 0 0 0 3px var(--nexus-accent-light);
+}
+
+.form-control:disabled {
+    background-color: var(--nexus-gray-100);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.form-control::placeholder {
+    color: var(--nexus-gray-400);
+}
+
+/* Form control sizes */
+.form-control-sm {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-sm);
+}
+
+.form-control-lg {
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-lg);
+}
+
+/* Textarea */
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Select */
+select.form-control {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right var(--space-3) center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: var(--space-10);
+}
+
+/* Checkbox & Radio */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--nexus-accent);
+}
+
+.form-check-label {
+    font-size: var(--font-base);
+    color: var(--nexus-text-primary);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Form validation states */
+.form-control.is-valid {
+    border-color: var(--nexus-success);
+}
+
+.form-control.is-invalid {
+    border-color: var(--nexus-danger);
+}
+
+.form-feedback {
+    display: block;
+    margin-top: var(--space-2);
+    font-size: var(--font-sm);
+}
+
+.form-feedback.valid {
+    color: var(--nexus-success);
+}
+
+.form-feedback.invalid {
+    color: var(--nexus-danger);
+}
+
+.form-help {
+    display: block;
+    margin-top: var(--space-2);
+    font-size: var(--font-sm);
+    color: var(--nexus-text-secondary);
+}
+
+/* Input group */
+.input-group {
+    display: flex;
+    width: 100%;
+}
+
+.input-group .form-control {
+    flex: 1;
+    border-radius: 0;
+}
+
+.input-group .form-control:first-child {
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: var(--radius-md);
+}
+
+.input-group .form-control:last-child {
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+}
+
+.input-group-text {
+    display: flex;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-base);
+    background-color: var(--nexus-gray-100);
+    border: 1px solid var(--nexus-gray-300);
+    color: var(--nexus-text-secondary);
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+.table-container {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--nexus-bg-secondary);
+}
+
+.table thead {
+    background-color: var(--nexus-gray-50);
+}
+
+.table thead th {
+    padding: var(--space-4) var(--space-5);
+    text-align: left;
+    font-size: var(--font-sm);
+    font-weight: var(--font-semibold);
+    color: var(--nexus-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--nexus-gray-200);
+}
+
+.table tbody td {
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-sm);
+    color: var(--nexus-text-secondary);
+    border-bottom: 1px solid var(--nexus-gray-200);
+}
+
+.table tbody tr {
+    transition: background-color var(--transition-fast);
+}
+
+.table tbody tr:hover {
+    background-color: var(--nexus-gray-50);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table striped */
+.table-striped tbody tr:nth-child(even) {
+    background-color: var(--nexus-gray-50);
+}
+
+/* Table bordered */
+.table-bordered {
+    border: 1px solid var(--nexus-gray-200);
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid var(--nexus-gray-200);
+}
+
+/* Table compact */
+.table-compact thead th,
+.table-compact tbody td {
+    padding: var(--space-2) var(--space-3);
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-xs);
+    font-weight: var(--font-medium);
+    line-height: 1;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-primary {
+    background-color: var(--nexus-accent-light);
+    color: var(--nexus-accent);
+}
+
+.badge-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--nexus-success);
+}
+
+.badge-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--nexus-warning);
+}
+
+.badge-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--nexus-danger);
+}
+
+.badge-secondary {
+    background-color: var(--nexus-gray-200);
+    color: var(--nexus-gray-700);
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+.alert {
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-md);
+    border-left: 4px solid;
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.alert-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-title {
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-1);
+}
+
+.alert-info {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left-color: var(--nexus-info);
+    color: var(--nexus-info);
+}
+
+.alert-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-left-color: var(--nexus-success);
+    color: var(--nexus-success);
+}
+
+.alert-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-left-color: var(--nexus-warning);
+    color: var(--nexus-warning);
+}
+
+.alert-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left-color: var(--nexus-danger);
+    color: var(--nexus-danger);
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: var(--z-modal-backdrop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+}
+
+.modal {
+    background-color: var(--nexus-bg-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2xl);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: var(--z-modal);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: var(--space-6);
+    border-bottom: 1px solid var(--nexus-gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-title {
+    font-size: var(--font-xl);
+    font-weight: var(--font-semibold);
+    color: var(--nexus-text-primary);
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: var(--font-2xl);
+    color: var(--nexus-text-secondary);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+    background-color: var(--nexus-gray-100);
+    color: var(--nexus-text-primary);
+}
+
+.modal-body {
+    padding: var(--space-6);
+}
+
+.modal-footer {
+    padding: var(--space-6);
+    border-top: 1px solid var(--nexus-gray-200);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+}
+
+/* Modal sizes */
+.modal-sm {
+    max-width: 400px;
+}
+
+.modal-lg {
+    max-width: 800px;
+}
+
+.modal-xl {
+    max-width: 1200px;
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+.tooltip {
+    position: absolute;
+    z-index: var(--z-tooltip);
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--nexus-gray-900);
+    color: var(--nexus-white);
+    font-size: var(--font-sm);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--nexus-gray-200);
+    border-top-color: var(--nexus-accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spinner-sm {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+.pagination {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+.pagination-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 var(--space-3);
+    font-size: var(--font-sm);
+    font-weight: var(--font-medium);
+    color: var(--nexus-text-primary);
+    background-color: var(--nexus-bg-secondary);
+    border: 1px solid var(--nexus-gray-300);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.pagination-item:hover:not(.active):not(:disabled) {
+    background-color: var(--nexus-gray-100);
+    border-color: var(--nexus-accent);
+}
+
+.pagination-item.active {
+    background-color: var(--nexus-accent);
+    color: var(--nexus-white);
+    border-color: var(--nexus-accent);
+}
+
+.pagination-item:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   BREADCRUMBS
+   ============================================ */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-sm);
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--nexus-text-secondary);
+}
+
+.breadcrumb-item a {
+    color: var(--nexus-accent);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--nexus-text-primary);
+    font-weight: var(--font-medium);
+}
+
+.breadcrumb-separator {
+    color: var(--nexus-text-tertiary);
+}

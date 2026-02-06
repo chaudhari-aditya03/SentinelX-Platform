@@ -1,0 +1,225 @@
+<!--
+    FOOTER.HTML - Global Footer Component
+    Purpose: Reusable footer for all pages
+    Part of Nexus Design System
+-->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Footer Top -->
+            <div class="footer-top">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- About Column -->
+                    <div class="footer-column">
+                        <div class="footer-logo mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="sidebar-logo-icon">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <span class="text-xl font-bold">Nexus</span>
+                            </div>
+                        </div>
+                        <p class="footer-text">
+                            Empowering communities through efficient crime data management and analytics.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+                            <li><a href="${pageContext.request.contextPath}/views/about.jsp">About Us</a></li>
+                            <li><a href="${pageContext.request.contextPath}/views/contactus.jsp">Contact</a></li>
+                            <li><a href="${pageContext.request.contextPath}/views/auth/register.jsp">Register</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Legal -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Legal</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Contact</h4>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="bi bi-geo-alt"></i>
+                                <span>123 Main Street, City, Country</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-telephone"></i>
+                                <span>+1 (555) 123-4567</span>
+                            </li>
+                            <li>
+                                <i class="bi bi-envelope"></i>
+                                <span>support@nexus.gov</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                        &copy; <span id="currentYear"></span> Nexus Crime Data & Analytics Hub. All rights reserved.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook" class="footer-social-link">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="footer-social-link">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="footer-social-link">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="footer-social-link">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        background-color: var(--nexus-primary);
+        color: var(--nexus-white);
+        margin-top: auto;
+    }
+    
+    .footer-content {
+        padding: var(--space-12) 0 var(--space-6);
+    }
+    
+    .footer-top {
+        padding-bottom: var(--space-8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: var(--space-6);
+    }
+    
+    .footer-column {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .footer-heading {
+        font-size: var(--font-lg);
+        font-weight: var(--font-semibold);
+        margin-bottom: var(--space-4);
+        color: var(--nexus-white);
+    }
+    
+    .footer-text {
+        font-size: var(--font-sm);
+        line-height: var(--leading-relaxed);
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-links li {
+        margin-bottom: var(--space-2);
+    }
+    
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: var(--font-sm);
+        transition: color var(--transition-fast);
+    }
+    
+    .footer-links a:hover {
+        color: var(--nexus-accent);
+    }
+    
+    .footer-contact {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-contact li {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2);
+        margin-bottom: var(--space-3);
+        font-size: var(--font-sm);
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .footer-contact i {
+        color: var(--nexus-accent);
+        font-size: var(--font-base);
+        margin-top: 2px;
+    }
+    
+    .footer-bottom-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+    }
+    
+    .footer-copyright {
+        font-size: var(--font-sm);
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0;
+    }
+    
+    .footer-social {
+        display: flex;
+        gap: var(--space-3);
+    }
+    
+    .footer-social-link {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--nexus-white);
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all var(--transition-fast);
+    }
+    
+    .footer-social-link:hover {
+        background-color: var(--nexus-accent);
+        transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+        .footer-bottom-content {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
+
+<script>
+    // Set current year dynamically
+    document.addEventListener('DOMContentLoaded', function() {
+        const yearElement = document.getElementById('currentYear');
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+    });
+</script>

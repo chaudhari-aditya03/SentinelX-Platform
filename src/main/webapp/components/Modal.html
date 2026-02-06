@@ -1,0 +1,213 @@
+<!--
+    MODAL.HTML - Reusable Modal Dialog Component
+    Purpose: Modal/dialog component for forms, confirmations, etc.
+    Part of Nexus Design System
+    
+    Usage: Include this structure and trigger with JavaScript
+-->
+
+<!-- Modal Backdrop and Container -->
+<div class="modal-backdrop hidden" id="exampleModal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h3 class="modal-title" id="modalTitle">Modal Title</h3>
+            <button class="modal-close" aria-label="Close modal" onclick="closeModal('exampleModal')">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="modal-body">
+            <p>Modal content goes here. You can include forms, text, or any other content.</p>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('exampleModal')">Cancel</button>
+            <button class="btn btn-primary">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<!-- EXAMPLE: Confirmation Modal -->
+<div class="modal-backdrop hidden" id="confirmModal" role="dialog" aria-labelledby="confirmTitle" aria-modal="true">
+    <div class="modal modal-sm">
+        <div class="modal-header">
+            <h3 class="modal-title" id="confirmTitle">Confirm Action</h3>
+            <button class="modal-close" aria-label="Close" onclick="closeModal('confirmModal')">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to proceed with this action?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('confirmModal')">Cancel</button>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- EXAMPLE: Form Modal -->
+<div class="modal-backdrop hidden" id="formModal" role="dialog" aria-labelledby="formTitle" aria-modal="true">
+    <div class="modal">
+        <div class="modal-header">
+            <h3 class="modal-title" id="formTitle">Add New Item</h3>
+            <button class="modal-close" aria-label="Close" onclick="closeModal('formModal')">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="exampleForm">
+                <div class="form-group">
+                    <label for="itemName" class="form-label required">Name</label>
+                    <input type="text" id="itemName" class="form-control" placeholder="Enter name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="itemDescription" class="form-label">Description</label>
+                    <textarea id="itemDescription" class="form-control" rows="3" placeholder="Enter description"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="itemStatus" class="form-label required">Status</label>
+                    <select id="itemStatus" class="form-control" required>
+                        <option value="">Select status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('formModal')">Cancel</button>
+            <button class="btn btn-primary" onclick="submitForm()">Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- EXAMPLE: Large Modal -->
+<div class="modal-backdrop hidden" id="largeModal" role="dialog" aria-labelledby="largeTitle" aria-modal="true">
+    <div class="modal modal-lg">
+        <div class="modal-header">
+            <h3 class="modal-title" id="largeTitle">Large Modal</h3>
+            <button class="modal-close" aria-label="Close" onclick="closeModal('largeModal')">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>This is a large modal for displaying more content.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('largeModal')">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    /**
+     * Open a modal by ID
+     * @param {string} modalId - The ID of the modal to open
+     */
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Focus on first focusable element
+            const firstFocusable = modal.querySelector('button, input, select, textarea');
+            if (firstFocusable) {
+                setTimeout(() => firstFocusable.focus(), 100);
+            }
+        }
+    }
+    
+    /**
+     * Close a modal by ID
+     * @param {string} modalId - The ID of the modal to close
+     */
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+    
+    /**
+     * Close modal when clicking outside
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        const modalBackdrops = document.querySelectorAll('.modal-backdrop');
+        
+        modalBackdrops.forEach(backdrop => {
+            backdrop.addEventListener('click', function(e) {
+                if (e.target === backdrop) {
+                    closeModal(backdrop.id);
+                }
+            });
+        });
+        
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const openModal = document.querySelector('.modal-backdrop:not(.hidden)');
+                if (openModal) {
+                    closeModal(openModal.id);
+                }
+            }
+        });
+    });
+    
+    /**
+     * Example form submission handler
+     */
+    function submitForm() {
+        const form = document.getElementById('exampleForm');
+        if (form && form.checkValidity()) {
+            // Handle form submission here
+            console.log('Form submitted');
+            closeModal('formModal');
+            
+            // Show success message
+            // showAlert('Success', 'Item added successfully', 'success');
+        } else {
+            form.reportValidity();
+        }
+    }
+</script>
+
+<style>
+    /* Additional modal animations */
+    .modal-backdrop:not(.hidden) {
+        display: flex;
+    }
+    
+    /* Prevent body scroll when modal is open */
+    body.modal-open {
+        overflow: hidden;
+    }
+</style>
+
+<!--
+    USAGE EXAMPLES:
+    
+    1. Open a modal:
+       <button onclick="openModal('exampleModal')">Open Modal</button>
+    
+    2. Close a modal:
+       <button onclick="closeModal('exampleModal')">Close</button>
+    
+    3. Modal sizes:
+       - modal-sm (small - 400px)
+       - modal (default - 500px)
+       - modal-lg (large - 800px)
+       - modal-xl (extra large - 1200px)
+    
+    4. Customization:
+       - Change modal-title for different headings
+       - Modify modal-body content
+       - Adjust button actions in modal-footer
+-->

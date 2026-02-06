@@ -1,0 +1,169 @@
+<!--
+    NAVBAR.HTML - Main Navigation Bar Component
+    Purpose: Reusable navigation component for landing pages
+    Part of Nexus Design System
+    
+    Usage: Include this file in your JSP pages using JSP include or server-side include
+-->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+        <div class="flex items-center justify-between py-4">
+            <!-- Logo -->
+            <a href="${pageContext.request.contextPath}/index.jsp" class="navbar-brand flex items-center gap-3">
+                <div class="sidebar-logo-icon" aria-hidden="true">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <span class="text-2xl font-bold">Nexus</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <ul class="navbar-nav hidden md:flex flex-row gap-6" role="menubar">
+                <li role="none">
+                    <a href="${pageContext.request.contextPath}/index.jsp" 
+                       class="nav-link" 
+                       role="menuitem">Home</a>
+                </li>
+                <li role="none">
+                    <a href="${pageContext.request.contextPath}/views/about.jsp" 
+                       class="nav-link" 
+                       role="menuitem">About</a>
+                </li>
+                <li role="none">
+                    <a href="${pageContext.request.contextPath}/views/contactus.jsp" 
+                       class="nav-link" 
+                       role="menuitem">Contact</a>
+                </li>
+            </ul>
+            
+            <!-- Auth Buttons -->
+            <div class="navbar-actions flex items-center gap-3">
+                <a href="${pageContext.request.contextPath}/views/auth/login.jsp" 
+                   class="btn btn-ghost hide-mobile">
+                    Sign In
+                </a>
+                <a href="${pageContext.request.contextPath}/views/auth/register.jsp" 
+                   class="btn btn-primary">
+                    Get Started
+                </a>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="navbar-toggle hide-desktop" 
+                        id="mobileMenuToggle" 
+                        aria-label="Toggle mobile menu"
+                        aria-expanded="false">
+                    <i class="bi bi-list" style="font-size: 24px;"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav hidden" id="mobileNav">
+            <ul class="flex flex-col gap-2 py-4">
+                <li>
+                    <a href="${pageContext.request.contextPath}/index.jsp" 
+                       class="nav-link block py-2">Home</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/views/about.jsp" 
+                       class="nav-link block py-2">About</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/views/contactus.jsp" 
+                       class="nav-link block py-2">Contact</a>
+                </li>
+                <li class="pt-2 border-t border-gray-200">
+                    <a href="${pageContext.request.contextPath}/views/auth/login.jsp" 
+                       class="nav-link block py-2">Sign In</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    /* Navbar specific styles */
+    .navbar {
+        background-color: var(--nexus-white);
+        border-bottom: 1px solid var(--nexus-gray-200);
+        box-shadow: var(--shadow-sm);
+        position: sticky;
+        top: 0;
+        z-index: var(--z-sticky);
+    }
+    
+    .navbar-brand {
+        text-decoration: none;
+        color: var(--nexus-primary);
+        transition: opacity var(--transition-fast);
+    }
+    
+    .navbar-brand:hover {
+        opacity: 0.8;
+    }
+    
+    .nav-link {
+        position: relative;
+        color: var(--nexus-text-primary);
+        text-decoration: none;
+        font-weight: var(--font-medium);
+        transition: color var(--transition-fast);
+        padding-bottom: 4px;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--nexus-accent);
+        transition: width var(--transition-base);
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        color: var(--nexus-accent);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+    }
+    
+    .mobile-nav {
+        border-top: 1px solid var(--nexus-gray-200);
+    }
+    
+    .mobile-nav.show {
+        display: block;
+    }
+    
+    @media (min-width: 768px) {
+        .mobile-nav {
+            display: none !important;
+        }
+    }
+</style>
+
+<script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.getElementById('mobileMenuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        if (toggle && mobileNav) {
+            toggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('show');
+                const isExpanded = mobileNav.classList.contains('show');
+                toggle.setAttribute('aria-expanded', isExpanded);
+                
+                // Toggle icon
+                const icon = toggle.querySelector('i');
+                if (icon) {
+                    icon.className = isExpanded ? 'bi bi-x' : 'bi bi-list';
+                }
+            });
+        }
+    });
+</script>
